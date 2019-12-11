@@ -76,7 +76,8 @@ function Individuo(dna) {
     push();
     //color
     noStroke();
-    fill(251, 161,26);
+    // fill(Math.random() * (255 - 0) + 0,Math.random() * (255 - 0) + 0,Math.random() * (255 - 0) + 0)
+    fill(150, 255,10);
     // fill(0,255,100)
     //translate to the postion of rocket
     translate(this.pos.x, this.pos.y);

@@ -1,17 +1,16 @@
 //@população
 //@seleção e @avaliaçaõ
-function Population() {
+function Population(pop) {
   // Array de individuos
+  this.popsize = pop
   this.rockets = [];
   // Amount of rockets
-  this.popsize = 2000;
   // parceiros para o cruzamento
   this.matingpool = [];
 
-  for (var i = 0; i < this.popsize; i++) {
+  for (let i = 0; i < this.popsize; i++) {
     this.rockets[i] = new Individuo();
   }
-
 
   //função de avaliação
   this.evaluate = function() {

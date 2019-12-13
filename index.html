@@ -10,28 +10,27 @@
   <script language="javascript" type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.min.js"></script>
   <!-- uncomment lines below to include extra p5 libraries -->
 
-  <!--<script language="javascript" src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/addons/p5.sound.min.js"></script>-->
+<!--  <script src="js/libs/vega-lite.js"></script>-->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.9.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.0.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.2.1"></script>
+
+
+  <script src="js/libs/visualizationFunctions.js"></script>
+  <script language="javascript" src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/addons/p5.sound.min.js"></script>
   <script language="javascript" type="text/javascript" src="js/cromossomo.js"></script>
   <script language="javascript" type="text/javascript" src="js/population.js"></script>
   <script language="javascript" type="text/javascript" src="js/Individuo.js"></script>
   <script src="js/jquery.js"></script>
   <script language="javascript" type="text/javascript" src="js/sketch.js"></script>
   <link rel="stylesheet" href="css/main.css">
+  <script src="js/libs/chart.js"></script>
 </head>
 <body>
-
-<div id="menu">
-  <!--<div class="inputForm">-->
-      <!--<button type="number" id="individuos" onclick="">individuos</button>-->
-  <!--</div>-->
-  <!--</div>-->
-<span>
-  <!--Análise grafica:-->
-<!--</span>-->
-<!--<div id="grafico">-->
-<!--</div>-->
-
-
+<div id="menu"></div>
+<div class="visualization">
+  <canvas id="myChart" style="position: absolute; height:35vh; width:100%; margin-top: 400px";></canvas>
 </div>
+
 </body>
 </html>

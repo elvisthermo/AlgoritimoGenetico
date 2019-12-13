@@ -31,6 +31,7 @@ function Individuo(dna) {
     this.fitness = map(d, 0, width, width, 0);
     if (this.completed) {
       this.fitness *= 10;
+      console.log("finalizado",this.fitness)
     }
 
     if (this.crashed) {

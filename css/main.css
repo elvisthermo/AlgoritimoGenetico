@@ -18,9 +18,17 @@ input{
 }
 
 
-#grafico{
-    background-color: #dcdcdc;
-    width:350px;
-    height: 300px;
+#myChart{
+    background-color: #32373A;
+    display: block;
+    position: inherit;
+    margin-top: 400px;
+    height: 200px;
+    color: #fff;
+    border-radius: 6px;
+    /*   Check out the fancy shadow  on this one */
+    box-shadow: 0 3rem 5rem -2rem rgba(0, 0, 0, 0.6);
+
+
 
 }

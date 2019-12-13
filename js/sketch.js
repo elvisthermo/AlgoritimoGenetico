@@ -1,8 +1,10 @@
 //variaveis globais
 //@funcoes
-let population;
+let population,maxfitness,minfitness,meanfitiness;
 // ciclo de vida
 let lifespan = 200;
+let generation = 0;
+let generationP = 0;
 let lifeP;
 // contagens dos frames
 let count = 0;
@@ -18,12 +20,16 @@ let rw = 200;
 let rh = 10;
 
 
+
+let meanArrays,generationCount;
+
 function setup() {
   createCanvas(400, 300);
 
   sliderPop = createSlider(20, 2000, 20);
   sliderPop.position(410, 10);
   sliderPop.style('width', '80px');
+
 
   paragraph = createP("População:20")
   paragraph.position(520, 0);
@@ -78,33 +84,39 @@ function setup() {
 
   population = new Population(sliderPop.value());
   lifeP = createP();
+  generationP = createP();
   target = createVector(width / 2, 50);
-
+  population.graph()
 }
 
 function updateWidth(){
+  generation =0;
   population = new Population(sliderPop.value());
   rw = sliderW.value();
 }
 
 function updateX() {
+  generation =0;
   population = new Population(sliderPop.value());
   rx = sliderX.value();
 }
 
 function updateY() {
+  generation =0;
   population = new Population(sliderPop.value());
   ry = sliderY.value();
 
 }
 
 function updateTime() {
+  generation =0;
   paragraph2.html("Tempo de vida:"+sliderTime.value());
   population = new Population(sliderPop.value());
   return lifespan = sliderTime.value();
 }
 
 function updateForce() {
+  generation =0;
   paragraph1.html("Força:"+sliderForce.value());
   population = new Population(sliderPop.value());
   maxforce = sliderForce.value();
@@ -112,22 +124,25 @@ function updateForce() {
 }
 
 function updatePop() {
+  generation =0;
   paragraph.html("População:"+sliderPop.value());
   maxforce = sliderForce.value();
   population = new Population(sliderPop.value());
+
 }
 
 function draw() {
   background(0);
   population.run();
-  lifeP.html(count);
-
+  lifeP.html("tempo de vida:"+count);
+  generationP.html("geração: "+generation);
   count++;
   if (count == lifespan) {
     population.evaluate();
     population.selection();
     // Population = new Population();
     count = 0;
+    generation++;
   }
   //draw barreira
   fill(255,0,0);
@@ -135,8 +150,8 @@ function draw() {
   //draw target
   fill(0,255,0)
   ellipse(target.x, target.y, 16, 16);
-}
 
+}
 
 
 

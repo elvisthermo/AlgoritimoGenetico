@@ -5,12 +5,12 @@ function Population(pop) {
   this.arrayMaxFittness_1 = [0];
   this.arrayMinFittness_1 = [0];
   this.arrayMeanFittness_1 = [0];
-  this.arrayMaxFittness_2 = [0];
-  this.arrayMinFittness_2 = [0];
-  this.arrayMeanFittness_2 = [0];
-  this.arrayMaxFittness_3 = [0];
-  this.arrayMinFittness_3 = [0];
-  this.arrayMeanFittness_3 = [0];
+  // this.arrayMaxFittness_2 = [0];
+  // this.arrayMinFittness_2 = [0];
+  // this.arrayMeanFittness_2 = [0];
+  // this.arrayMaxFittness_3 = [0];
+  // this.arrayMinFittness_3 = [0];
+  // this.arrayMeanFittness_3 = [0];
   this.end_execution =0;
 
   // Array de individuoss
@@ -59,39 +59,6 @@ function Population(pop) {
 
     console.log(arrayFittnes)
 
-
-
-
-    //media
-    function mean(array){
-      let means = 0
-      for (let i = 0; i <array.length ; i++) {
-        means+=array[i]
-      }
-      means = means/array.length;
-      return means;
-    }
-
-    function maximo(array){
-      let max = -Infinity;
-      for (let i = 1; i < array.length; ++i) {
-        if (array[i] > max) {
-          max = array[i];
-        }
-      }
-      return max;
-    }
-
-    function minimo(array){
-      let min = Infinity;
-      for (let i = 1; i < array.length; ++i) {
-        if (array[i] < min) {
-          min = array[i];
-        }
-      }
-      return min;
-    }
-
     let min= minimo(arrayFittnes) // 1
     let max= maximo(arrayFittnes) // 1
 
@@ -128,8 +95,20 @@ function Population(pop) {
       return 1;
     }
 
-
   }
+
+  this.getArrayFitnnesMeans = function () {
+    return this.arrayMeanFittness_1;
+  }
+
+  this.getArrayFitnnesMax = function () {
+    return this.arrayMaxFittness_1;
+  }
+
+  this.getArrayFitnnesMin = function () {
+    return this.arrayMinFittness_1;
+  }
+
   this.graph = function () {
 
     // window.onload = function() {

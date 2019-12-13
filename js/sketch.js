@@ -21,7 +21,7 @@ let rh = 10;
 
 
 
-let meanArrays,generationCount;
+let meanArrays,maxArrays,minArrays,generationCount;
 
 function setup() {
   createCanvas(400, 300);
@@ -149,9 +149,11 @@ function draw() {
   if (count == lifespan) {
     let end = population.evaluate();
     if(end===1){
+
+
       updatePop();
       end = population.evaluate();
-      population.stop();
+      // population.stop();
     }
 
     population.selection();

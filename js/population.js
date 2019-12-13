@@ -2,9 +2,16 @@
 //@seleção e @avaliaçaõ
 function Population(pop) {
   this.generationCount = [0];
-  this.arrayMaxFittness = [0];
-  this.arrayMinFittness = [0];
-  this.arrayMeanFittness = [0];
+  this.arrayMaxFittness_1 = [0];
+  this.arrayMinFittness_1 = [0];
+  this.arrayMeanFittness_1 = [0];
+  this.arrayMaxFittness_2 = [0];
+  this.arrayMinFittness_2 = [0];
+  this.arrayMeanFittness_2 = [0];
+  this.arrayMaxFittness_3 = [0];
+  this.arrayMinFittness_3 = [0];
+  this.arrayMeanFittness_3 = [0];
+  this.end_execution =0;
 
   // Array de individuoss
   this.popsize = pop
@@ -15,6 +22,12 @@ function Population(pop) {
 
   for (let i = 0; i < this.popsize; i++) {
     this.rockets[i] = new Individuo();
+  }
+
+  this.rocketsReset = function () {
+    for (let i = 0; i < this.popsize; i++) {
+      this.rockets[i] = new Individuo();
+    }
   }
 
   //função de avaliação
@@ -38,10 +51,9 @@ function Population(pop) {
       // }
     }
     // Normaliza o  fitnesses
-    let test
     for (var i = 0; i < this.popsize; i++) {
           this.rockets[i].fitness /= maxfit;
-          test = this.rockets[i].fitness;
+
           // minimofit = this.rockets[i].fitness /= minimofit;
     }
 
@@ -83,18 +95,15 @@ function Population(pop) {
     let min= minimo(arrayFittnes) // 1
     let max= maximo(arrayFittnes) // 1
 
-    this.arrayMinFittness.push(min);
+    this.arrayMinFittness_1.push(min);
     let media = mean(arrayFittnes);
-    this.arrayMeanFittness.push(media);
-    this.arrayMaxFittness.push(max);
+    this.arrayMeanFittness_1.push(media);
+    this.arrayMaxFittness_1.push(max);
     console.log("maxfit",maxfit/4000);
     console.log("arrayfittness",arrayFittnes)
     console.log("Max:",max);
     console.log("Min:",min);
     console.log("mean",media);
-
-
-
 
     this.matingpool = [];
     for (var i = 0; i < this.popsize; i++) {
@@ -106,6 +115,20 @@ function Population(pop) {
     this.generationCount.push(this.generationCount.length)
 
     this.graph();
+
+    if(max===1)
+      this.end_execution++;
+
+    //reset functions
+    if(this.end_execution ===5){
+      // // this.rockets =[];
+      // this.matingpool = [];
+      // this.rocketsReset();
+      // this.generationCount = [0];
+      return 1;
+    }
+
+
   }
   this.graph = function () {
 
@@ -117,7 +140,7 @@ function Population(pop) {
 
       var meanline = {
         label: "Média do fittness",
-        data: this.arrayMeanFittness,
+        data: this.arrayMeanFittness_1,
         lineTension: 0,
         fill: false,
         borderColor: '#6d78ad'
@@ -125,7 +148,7 @@ function Population(pop) {
 
       var limSup = {
         label: "Limite Superior",
-        data: this.arrayMaxFittness,
+        data: this.arrayMaxFittness_1,
         lineTension: 0,
         fill: false,
         borderColor: '#51cda0'
@@ -133,7 +156,7 @@ function Population(pop) {
 
       var limInf = {
         label: "Limite Inferior",
-        data: this.arrayMinFittness,
+        data: this.arrayMinFittness_1,
         lineTension: 0,
         fill: false,
         borderColor: '#ae6a75'
@@ -162,10 +185,7 @@ function Population(pop) {
         options: chartOptions
       });
 
-
-
     // }
-
 
   }
 

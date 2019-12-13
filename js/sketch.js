@@ -26,7 +26,7 @@ let meanArrays,generationCount;
 function setup() {
   createCanvas(400, 300);
 
-  sliderPop = createSlider(20, 2000, 20);
+  sliderPop = createSlider(20, 2000, 20,10);
   sliderPop.position(410, 10);
   sliderPop.style('width', '80px');
 
@@ -131,19 +131,35 @@ function updatePop() {
 
 }
 
+function resetPop() {
+  generation =0;
+  paragraph.html("População:"+sliderPop.value());
+  maxforce = sliderForce.value();
+  population = new Population(sliderPop.value());
+
+}
+
 function draw() {
   background(0);
   population.run();
   lifeP.html("tempo de vida:"+count);
   generationP.html("geração: "+generation);
   count++;
+
   if (count == lifespan) {
-    population.evaluate();
+    let end = population.evaluate();
+    if(end===1){
+      updatePop();
+      end = population.evaluate();
+      population.stop();
+    }
+
     population.selection();
     // Population = new Population();
     count = 0;
     generation++;
   }
+
   //draw barreira
   fill(255,0,0);
   rect(rx, ry, rw, rh);

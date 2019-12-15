@@ -8,6 +8,14 @@ function CountGenerations(count) {
     return arr;
 }
 
+function generateArr(arr){
+    let array =[]
+    for (let i = 0; i <arr ; i++) {
+        array.push(i)
+    }
+    return array;
+}
+
 
 function addData(chart, label, data) {
     chart.data.labels.push(label);
@@ -53,4 +61,28 @@ function minimo(array){
         }
     }
     return min;
+}
+
+function normalizeArrays(array1,array2,array3) {
+    let arraymean = [];
+    let max = Math.max(array1.length,array2.length,array3.length);
+    for (let i = 0; i <max ; i++) {
+        if (array1[i] === undefined){
+            array1[i] = 1;
+        }
+        if (array2[i] === undefined){
+            array2[i] = 1;
+        }
+        if (array3[i] === undefined){
+            array3[i] = 1;
+        }
+    }
+    for (let i = 0; i <max ; i++) {
+        let result = (array1[i]+ array2[i]+ array3[i])/3;
+        arraymean.push(result);
+    }
+
+    // arraymean = mean(arraymean);
+    console.log("medias:",arraymean)
+    return arraymean;
 }

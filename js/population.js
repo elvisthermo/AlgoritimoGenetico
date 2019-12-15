@@ -5,6 +5,7 @@ function Population(pop) {
   this.arrayMaxFittness_1 = [0];
   this.arrayMinFittness_1 = [0];
   this.arrayMeanFittness_1 = [0];
+  this.stop = false;
   // this.arrayMaxFittness_2 = [0];
   // this.arrayMinFittness_2 = [0];
   // this.arrayMeanFittness_2 = [0];
@@ -96,14 +97,26 @@ function Population(pop) {
     }
 
   }
+  this.setArrayFitnnesMeans = function (arr) {
+    this.arrayMeanFittness_1 = arr;
+  }
 
   this.getArrayFitnnesMeans = function () {
     return this.arrayMeanFittness_1;
   }
 
+  this.setArrayFitnnesMax = function (arr) {
+    this.arrayMaxFittness_1 = arr;
+  }
+
   this.getArrayFitnnesMax = function () {
     return this.arrayMaxFittness_1;
   }
+
+  this.setArrayFitnnesMin = function (arr) {
+    this.arrayMinFittness_1 =arr;
+  }
+
 
   this.getArrayFitnnesMin = function () {
     return this.arrayMinFittness_1;
@@ -111,60 +124,18 @@ function Population(pop) {
 
   this.graph = function () {
 
-    // window.onload = function() {
-      var speedCanvas = document.getElementById("myChart").getContext('2d');
-      Chart.defaults.global.defaultFontColor = "white";
-      Chart.defaults.global.defaultFontFamily = "Lato";
-      Chart.defaults.global.defaultFontSize = 18;
-
-      var meanline = {
-        label: "Média do fittness",
-        data: this.arrayMeanFittness_1,
-        lineTension: 0,
-        fill: false,
-        borderColor: '#6d78ad'
-      };
-
-      var limSup = {
-        label: "Limite Superior",
-        data: this.arrayMaxFittness_1,
-        lineTension: 0,
-        fill: false,
-        borderColor: '#51cda0'
-      };
-
-      var limInf = {
-        label: "Limite Inferior",
-        data: this.arrayMinFittness_1,
-        lineTension: 0,
-        fill: false,
-        borderColor: '#ae6a75'
-      };
-
-      var speedData = {
-        labels: this.generationCount,
-        datasets: [meanline,limSup,limInf]
-      };
-
-      var chartOptions = {
-        legend: {
-          display: true,
-          position: 'top',
-          labels: {
-            boxWidth: 80,
-            fontColor: 'white'
-          },
-
-        }
-      };
-
-      var lineChart = new Chart(speedCanvas, {
-        type: 'line',
-        data: speedData,
-        options: chartOptions
-      });
-
+    createGraph(this.arrayMeanFittness_1,this.arrayMinFittness_1,this.arrayMaxFittness_1,this.generationCount);
     // }
+
+  }
+
+  this.setGraph = function (mean,min,max,generation) {
+    this.arrayMaxFittness_1 = max;
+    this.arrayMinFittness_1 = min;
+    this.arrayMeanFittness_1 = mean;
+    this.generationCount = generation;
+
+    this.graph();
 
   }
 
@@ -182,12 +153,16 @@ function Population(pop) {
     this.rockets = newRockets;
   }
 
+
   // função de redraw desenho
   this.run = function() {
     for (var i = 0; i < this.popsize; i++) {
       this.rockets[i].update();
       this.rockets[i].show();
 
+    }
+    if (this.stop){
+      noLoop();
     }
 
   }

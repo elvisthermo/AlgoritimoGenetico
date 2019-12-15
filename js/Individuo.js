@@ -72,10 +72,6 @@ function Individuo(dna) {
     }
   }
 
-  this.stop = function () {
-    noLoop();
-  }
-
   //draw individuo
   this.show = function() {
     push();

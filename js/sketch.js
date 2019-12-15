@@ -20,6 +20,12 @@ let rw = 200;
 let rh = 10;
 
 
+let rx2 = 100;
+let ry2 = 150;
+let rw2 = 200;
+let rh2 = 10;
+
+
 
 let meanArrays =[],maxArrays=[],minArrays=[],generationCount=0;
 
@@ -65,22 +71,21 @@ function updateTarget() {
   target =  createVector(sliderTargetX.value(),sliderTargetY.value());
 }
 
-function updateWidth(){
-  generation =0;
-  population = new Population(sliderPop.value());
-  rw = sliderW.value();
-}
-
-function updateX() {
-  generation =0;
-  population = new Population(sliderPop.value());
-  rx = sliderX.value();
-}
-
-function updateY() {
+function  updateObj1() {
   generation =0;
   population = new Population(sliderPop.value());
   ry = sliderY.value();
+  rx = sliderX.value();
+  rw = sliderW.value();
+
+}
+
+function  updateObj2() {
+  generation =0;
+  population = new Population(sliderPop.value());
+  rw2 = sliderW_obj.value();
+  rx2 = sliderX_obj.value();
+  ry2 = sliderY_obj.value();
 
 }
 
@@ -150,7 +155,8 @@ function draw() {
   }
 
   //draw barreira
-  fill(255,0,0);
+  fill("deeppink");
+  rect(rx2, ry2, rw2, rh2);
   rect(rx, ry, rw, rh);
   //draw target
   fill(0,255,0)
@@ -174,7 +180,7 @@ function createMenu(){
   paragraph1 = createP("Força:0.2")
   paragraph1.position(520, 20);
 
-  sliderTime = createSlider(100, 400, 100);
+  sliderTime = createSlider(100, 400, 100,50);
   sliderTime.position(410, 50);
   sliderTime.style('width', '80px');
 
@@ -182,69 +188,88 @@ function createMenu(){
   paragraph2.position(520, 40);
 
 
-  paragraph3 = createP("obstáculo")
+  paragraph3 = createP("obstáculo 1")
   paragraph3.position(420, 60);
 
+  paragraph4 = createP("Posição  X")
+  paragraph4.position(720, 75);
+
+  paragraph5 = createP("Posição  Y")
+  paragraph5.position(720, 90);
+
+  paragraph6 = createP("Largura")
+  paragraph6.position(720, 115);
+
+  //button barreita1
   sliderX = createSlider(0, 255, 100);
   sliderX.position(410, 85);
   sliderX.style('width', '80px');
 
-  paragraph4 = createP("Posição  X")
-  paragraph4.position(520, 75);
-
   sliderY = createSlider(0, 255, 100);
   sliderY.position(410, 105);
   sliderY.style('width', '80px');
-
-  paragraph5 = createP("Posição  Y")
-  paragraph5.position(520, 90);
 
 
   sliderW = createSlider(200, 355, 100);
   sliderW.position(410, 125);
   sliderW.style('width', '80px');
 
-  paragraph6 = createP("Largura")
-  paragraph6.position(520, 115);
+
+  //obstaculo 2
+  paragraph_ob2 = createP("obstáculo 2")
+  paragraph_ob2.position(520, 60);
+
+  sliderX_obj = createSlider(0, 255, 100);
+  sliderX_obj.position(510, 85);
+  sliderX_obj.style('width', '80px');
+
+  sliderY_obj = createSlider(0, 255, 100);
+  sliderY_obj.position(510, 105);
+  sliderY_obj.style('width', '80px');
+
+  sliderW_obj = createSlider(200, 355, 100);
+  sliderW_obj.position(510, 125);
+  sliderW_obj.style('width', '80px');
+
+
+  //target
 
   paragraph_targer = createP("Target")
   paragraph_targer.position(620, 60);
 
   sliderTargetX = createSlider(0, 400, 200,1);
-  sliderTargetX.position(610, 90);
+  sliderTargetX.position(610, 85);
   sliderTargetX.style('width', '80px');
 
-  paragraph_targetX = createP("Posição X")
-  paragraph_targetX.position(720, 90);
-
   sliderTargetY = createSlider(0, 50, 50,1);
-  sliderTargetY.position(610, 125);
+  sliderTargetY.position(610, 105);
   sliderTargetY.style('width', '80px');
 
-  paragraph_targetY = createP("Posição X")
-  paragraph_targetY.position(720, 115);
 
-
-  sliderForce.input(updateForce);
-  sliderPop.input(updatePop);
-  sliderTime.input(updateTime);
-  sliderX.input(updateX);
-  sliderY.input(updateY);
-  sliderW.input(updateWidth);
-  sliderTargetY.input(updateTarget);
-  sliderTargetX.input(updateTarget);
-
+  //execução graficos
   button1 = createButton('Execução 1');
   button1.position(410, 160);
 
   button2 = createButton('Execução 2');
   button2.position(510, 160);
 
-
   button3 = createButton('Execução 3');
   button3.position(610, 160);
 
-
   button4 = createButton('Media das 3 Execuções ');
   button4.position(710, 160);
+
+  sliderForce.input(updateForce);
+  sliderPop.input(updatePop);
+  sliderTime.input(updateTime);
+  sliderX.input(updateObj1);
+  sliderY.input(updateObj1);
+  sliderW.input(updateObj1);
+  sliderX_obj.input(updateObj2);
+  sliderY_obj.input(updateObj2);
+  sliderW_obj.input(updateObj2);
+  sliderTargetY.input(updateTarget);
+  sliderTargetX.input(updateTarget);
+
 }
+

@@ -6,12 +6,6 @@ function Population(pop) {
   this.arrayMinFittness_1 = [0];
   this.arrayMeanFittness_1 = [0];
   this.stop = false;
-  // this.arrayMaxFittness_2 = [0];
-  // this.arrayMinFittness_2 = [0];
-  // this.arrayMeanFittness_2 = [0];
-  // this.arrayMaxFittness_3 = [0];
-  // this.arrayMinFittness_3 = [0];
-  // this.arrayMeanFittness_3 = [0];
   this.end_execution =0;
 
   // Array de individuoss
@@ -141,12 +135,12 @@ function Population(pop) {
 
   //Seleção dos gene dos filhos
   this.selection = function() {
-    var newRockets = [];
-    for (var i = 0; i < this.rockets.length; i++) {
-      var parentA = random(this.matingpool).dna;
-      var parentB = random(this.matingpool).dna;
+    let newRockets = [];
+    for (let i = 0; i < this.rockets.length; i++) {
+      let parentA = random(this.matingpool).dna;
+      let parentB = random(this.matingpool).dna;
 
-      var child = parentA.crossover(parentB);
+      let child = parentA.crossover(parentB);
       child.mutation();
       newRockets[i] = new Individuo(child);
     }

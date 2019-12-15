@@ -5,6 +5,7 @@ function Individuo(dna) {
   this.pos = createVector(width / 2, height);
   this.vel = createVector();
   this.acc = createVector();
+  this.color = "mediumpurple"
   //tarefa completa
   this.completed = false;
   // bateu nas barreiras
@@ -47,20 +48,32 @@ function Individuo(dna) {
     if (d < 10) {
       this.completed = true;
       this.pos = target.copy();
+      this.color = "mediumpurple";
+
     }
     // Individuo nas barreiras
     if (this.pos.x > rx && this.pos.x < rx + rw && this.pos.y > ry && this.pos.y < ry + rh) {
       this.crashed = true;
+      this.color = "lavender";
     }
+    if (this.pos.x > rx2 && this.pos.x < rx2 + rw2 && this.pos.y > ry2 && this.pos.y < ry2 + rh2) {
+      this.crashed = true;
+      this.color = "lavender";
+
+    }
+
     //laterais
     if (this.pos.x > width || this.pos.x < 0) {
       this.crashed = true;
+      this.color = "lavender";
+
     }
     // top and bottom
     if (this.pos.y > height || this.pos.y < 0) {
       this.crashed = true;
-    }
+      this.color = "lavender";
 
+    }
 
     this.applyForce(this.dna.genes[count]);
 
@@ -78,7 +91,7 @@ function Individuo(dna) {
     //color
     noStroke();
     // fill(Math.random() * (255 - 0) + 0,Math.random() * (255 - 0) + 0,Math.random() * (255 - 0) + 0)
-    fill(150, 255,10);
+    fill(this.color);
     // fill(0,255,100)
     //translate to the postion of rocket
     translate(this.pos.x, this.pos.y);

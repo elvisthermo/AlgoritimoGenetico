@@ -136,6 +136,7 @@ function draw() {
     let end = population.evaluate();
     if(end===1){
       generationCount++;
+      // alert(generationCount);
       let mean =population.getArrayFitnnesMeans()
       let max = population.getArrayFitnnesMax()
       let min = population.getArrayFitnnesMin()

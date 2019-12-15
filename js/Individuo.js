@@ -84,7 +84,6 @@ function Individuo(dna) {
       this.vel.limit(4);
     }
   }
-
   //draw individuo
   this.show = function() {
     push();

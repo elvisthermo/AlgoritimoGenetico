@@ -66,16 +66,15 @@ function minimo(array){
 function normalizeArrays(array1,array2,array3) {
     let arraymean = [];
     let max = Math.max(array1.length,array2.length,array3.length);
-
     for (let i = 0; i <max ; i++) {
         if (array1[i] === undefined){
-            array1[i] = array1[i-1];
+            array1[i] = 1;
         }
         if (array2[i] === undefined){
-            array2[i] = array2[i-1];
+            array2[i] = 1;
         }
         if (array3[i] === undefined){
-            array3[i] = array3[i-1];
+            array3[i] = 1;
         }
     }
     for (let i = 0; i <max ; i++) {

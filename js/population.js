@@ -41,12 +41,15 @@ function Population(pop) {
         maxfit = this.rockets[i].fitness;
 
       }
-
+      // if(this.rockets[i].fitness<minimofit){
+        // minfitness = this.rockets[i].fitness;
+      // }
     }
     // Normaliza o  fitnesses
     for (var i = 0; i < this.popsize; i++) {
           this.rockets[i].fitness /= maxfit;
 
+          // minimofit = this.rockets[i].fitness /= minimofit;
     }
 
     console.log(arrayFittnes)
@@ -133,7 +136,6 @@ function Population(pop) {
   //Seleção dos gene dos filhos
   this.selection = function() {
     let newRockets = [];
-
     for (let i = 0; i < this.rockets.length; i++) {
       let parentA = random(this.matingpool).dna;
       let parentB = random(this.matingpool).dna;

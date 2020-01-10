@@ -17,11 +17,10 @@ function Cromossomo(genes) {
 
   //crossover
   this.crossover = function(partner) {
-    let newgenes = [];
-    // seleção aaleatoria metade dos genes
-    // let mid = floor((this.genes.length)/2);
-    let mid = floor(random(this.genes.length));
-    for (let i = 0; i < this.genes.length; i++) {
+    var newgenes = [];
+    // seleção aaleatoria
+    var mid = floor(random(this.genes.length));
+    for (var i = 0; i < this.genes.length; i++) {
       // Se i for maior que o meio, o novo gene se não gene do parceiro
       if (i > mid) {
         newgenes[i] = this.genes[i];
